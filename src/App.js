@@ -15,22 +15,18 @@ class App extends React.Component {
   render() {
     return (
       <div>
-      <input type="text"
-        onChange={this.update.bind(this)}/>
-      <h1>{this.state.txt}</h1>
-    </div>
+        <h1>{this.state.txt}</h1>
+        <Widget update = {this.update.bind(this)} />
+        <Widget update = {this.update.bind(this)} />
+        <Widget update = {this.update.bind(this)} />
+        
+      </div>
   )
   }
 }
 
-App.propTypes = {
-  txt: PropTypes.string,
-  cat: PropTypes.number.isRequired
-}
+const Widget = (props) => <input type="text"
+  onChange={props.update}/>
 
-App.defaultProps = {
-  txt: "this is the default txt"
-}
-// const App = () => <h1> Hello Stateless</h1>
 
 export default App ;
