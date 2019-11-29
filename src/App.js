@@ -1,26 +1,36 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import PropTypes from 'prop-types' ;
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      txt: 'this is the state text'
+    }
+  }
+  update (e) {
+    this.setState({txt: e.target.value})
+  }
+
+  render() {
+    return (
+      <div>
+      <input type="text"
+        onChange={this.update.bind(this)}/>
+      <h1>{this.state.txt}</h1>
     </div>
-  );
+  )
+  }
 }
 
-export default App;
+App.propTypes = {
+  txt: PropTypes.string,
+  cat: PropTypes.number.isRequired
+}
+
+App.defaultProps = {
+  txt: "this is the default txt"
+}
+// const App = () => <h1> Hello Stateless</h1>
+
+export default App ;
